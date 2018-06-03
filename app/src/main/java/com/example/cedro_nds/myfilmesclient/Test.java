@@ -11,10 +11,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Test implements Autenticacao {
     @Override
-    public Call<List<AutenticarModel>> autenticacaoAPI() {        Retrofit retrofit = new Retrofit.Builder().baseUrl(Autenticacao.API_URL)
+    public Call<List<AutenticarModel>> autenticacaoAPI() {
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Autenticacao.API_URL)
             .addConverterFactory(GsonConverterFactory.create()).build();
 
-        List<AutenticarModel> repositories = null;
+        List<AutenticarModel> credencials = null;
 
         Autenticacao service = retrofit.create(Autenticacao.class);
 
@@ -23,12 +24,12 @@ public class Test implements Autenticacao {
         Response<List<AutenticarModel>> response = null;
         try {
             response = call2.execute();
-            repositories = response.body();
-            if (repositories != null) {
+            credencials = response.body();
+            if (credencials != null) {
 
-                return (Call<List<AutenticarModel>>) repositories;
+                return (Call<List<AutenticarModel>>) credencials;
             }
-            return (Call<List<AutenticarModel>>) repositories;
+            return (Call<List<AutenticarModel>>) credencials;
         } catch (Exception e) {
             e.printStackTrace();
         }
